@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chat Room</title>
+    <title>vChat</title>
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,8 +13,9 @@
 <body style="margin-top: 10px;">
     <div id="app" class="container bg">
         <div v-show="!userLoggedIn">
-            <section>
-                <h2 id="text">Chat Room</h2>
+            <section class="vertical">
+                <img src="logo.png" alt="vChat Logo" style="height: 30rem; width: 30rem">
+                <h2 id="text">vChat</h2>
             </section>
         </div>
         <div class="row" v-show="!userLoggedIn">
@@ -22,9 +23,9 @@
                 <form action="" name="loginForm" v-on:submit.prevent="">
                     <div class="row">
                         <div class="input-group">
-                            <input class="form-control" type="text" autocomplete="off" v-model="userName" placeholder="Please give yourself a nickname" />
+                            <input class="form-control" type="text" autocomplete="off" v-model="userName" placeholder="What would you like to be called?" />
                             <div class="input-group-btn">
-                                <button class="btn btn-danger" type="button" @click="login(userName)">Let's Gooo</button>
+                                <button class="btn btn-primary" type="button" @click="login(userName)">Join</button>
                             </div>
                         </div>
                     </div>
@@ -32,15 +33,19 @@
             </div>
         </div>
         <div class="bg">
-            <div class="jumbotron bg wht" v-show="userLoggedIn">
-                <h1 class="display-4">Welcome!</h1>
-                <p class="lead">Enjoy yourself chatting with others.</p>
+            <div class="horizontal" v-show="userLoggedIn">
+                <img src="logo.png" alt="vChat Logo" style="height: 17rem; width: 17rem">
+                <div class="jumbotron bg wht" style="padding: 0px;">
+                    <h1 class="display-4">vChat</h1>
+                    <p class="lead">Chat made easy!</p>
+                </div>
             </div>
+            
         <div class="row  bg" style="min-height: 500px;" v-show="userLoggedIn">
             <div class="col-md-3 bg">
-                <div class="panel panel-danger">
+                <div class="panel panel-primary">
                     <div class="panel-heading" id="userListHeading">
-                        <span class="glyphicon glyphicon-user"></span> Online Users
+                        <span class="glyphicon glyphicon-user"></span> Active vChatters
                         <div class="btn-group pull-right">
                             <a type="button" class="btn btn-default btn-xs" data-toggle="collapse"  href="#userListBody">
                                 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -55,7 +60,7 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="panel panel-danger">
+                <div class="panel panel-primary">
                     <div class="panel-heading"><span class="glyphicon glyphicon-comment"></span> Messages</div>
                     <div class="panel-body" style="height:300px; overflow-y: auto;">
                         <ul id="messages" class="list-group">
@@ -67,17 +72,16 @@
                     <div class="input-group">
                         <input class="form-control" type="text" autocomplete="off" v-model="message" placeholder="Type your message here" />
                         <div class="input-group-btn">
-                            <button class="btn btn-danger" type="button" @click="sendMessage(message)">Send</button>
+                            <button class="btn btn-primary" type="button" @click="sendMessage(message)">Send</button>
                         </div>
                     </div>
                 </form>
+                <div style="padding-top: 1rem;">
+                    <a href="/" v-show="userLoggedIn"><button class ="btn btn-danger" v-show="userLoggedIn">Leave</button></a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="bg">
-        <center><a href="/" v-show="userLoggedIn"><button class ="btn btn-danger" v-show="userLoggedIn">Go Back</button></a></center>
-    </div>
-    <br><br><br>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>

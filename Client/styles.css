@@ -10,28 +10,36 @@
     font-size: 8em;
   }
 .bg{
-    background-color: #EB6440;
+    background-color: #38b6ff;
     align-items: center;
 }
 .wht{
     color: #fff;
 }
 body{
-    background-color: #EB6440;
+    background-color: #38b6ff;
 }
 .vertical-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  section{
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+section{
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vertical{
+  flex-direction: column;
+}
+.horizontal{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
