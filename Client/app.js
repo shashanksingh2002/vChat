@@ -31,6 +31,5 @@
             }
         }
     });
-
-    vue.initSocket();
+   vue.initSocket();
 }());
